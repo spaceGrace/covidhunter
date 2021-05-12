@@ -4,9 +4,9 @@ import { Theme } from '../../themes';
 
 const Header: FC = ({children}) => {
     const TheHeader = styled.header`
-        width: 100%;
         background-color: ${Theme['light'].main};
-        padding: 20px;
+        display: flex;
+        justify-content: center;
     `;
 
     return (

@@ -1,16 +1,21 @@
+import { Action } from "redux"
+
 const initialState = {
-    theme: 'light',
-    allCountries: [],
-  }
-  
-  // Use the initialState as a default value
-  export default function appReducer(state = initialState, action) {
-    // The reducer normally looks at the action type field to decide what happens
-    switch (action.type) {
-      // Do something here based on the different types of actions
-      default:
-        // If this reducer doesn't recognize the action type, or doesn't
-        // care about this specific action, return the existing state unchanged
-        return state
+  theme: 'light',
+  reports: [],
+}
+
+export default function appReducer(state = initialState, action: any) {
+  // The reducer normally looks at the action type field to decide what happens
+  switch (action.type) {
+    case 'REPORTS': {
+      return {
+        ...state,
+        //@ts-ignore
+        reports: action.reports,
+      }
     }
+    default:
+      return state
   }
+}

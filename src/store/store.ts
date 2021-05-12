@@ -1,14 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { getLatestAllCountries } from './sagas';
+import appReducer from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  reducer,
+export const store = createStore(
+  appReducer,
   applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(getLatestAllCountries);
 
-const action = type => store.dispatch({type});
+export const action = (type: string) => store.dispatch({type});
